@@ -1,6 +1,7 @@
 import json
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 def send_fruits(request):
@@ -38,3 +39,5 @@ def send_fruits(request):
         json.dumps({'fruits': fruits}),
         content_type='application/json'
     )
+    # Alternative:
+    # return JsonResponse({'fruits': fruits})

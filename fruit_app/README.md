@@ -25,44 +25,52 @@ The Backend is built with **Python** and **Django** and returns the fruit data a
 
 ## 📂 Project Structure
 
+```text
 Django-Projekt fruit_app/
 ├── core/
-│ ├── settings.py
-│ └── urls.py
+│   ├── settings.py
+│   └── urls.py
 │
 ├── fruit_app/
-│ ├── views.py
-│ └── urls.py
+│   ├── views.py
+│   └── urls.py
 │
 ├── manage.py
 └── requirements.txt
+```
 
 ## 🚀 API Endpoint
 
 The main endpoint is:
 
+```text
 GET /fruits/
+```
 
 Example:
 
+```text
 http://127.0.0.1:8000/fruits/
+```
 
 The API returns JSON in the following structure:
 
+```json
 {
-"fruits": [
-{
-"name": "Apple",
-"color": "Red",
-"weight": 150
-},
-{
-"name": "Banana",
-"color": "Yellow",
-"weight": 120
+  "fruits": [
+    {
+      "name": "Apple",
+      "color": "Red",
+      "weight": 150
+    },
+    {
+      "name": "Banana",
+      "color": "Yellow",
+      "weight": 120
+    }
+  ]
 }
-]
-}
+```
 
 ## 🌐 Frontend
 
@@ -84,25 +92,35 @@ The development Frontend origin is allowed to access the Django API.
 
 ### 1. Activate the virtual environment
 
+```bash
 .venv\Scripts\activate
+```
 
 ### 2. Install dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ### 3. Start the Django development server
 
+```bash
 python manage.py runserver
+```
 
 The Backend will be available at:
 
+```text
 http://127.0.0.1:8000/
+```
 
 ### 4. Test the API
 
 Open:
 
+```text
 http://127.0.0.1:8000/fruits/
+```
 
 You should receive the fruit data as JSON.
 

@@ -5,7 +5,6 @@ from django.http import JsonResponse
 
 
 def send_fruits(request):
-
     # fruits - List containing 5 fruits as dictionaries
     fruits = [
         {
@@ -35,9 +34,10 @@ def send_fruits(request):
         }
     ]
 
-    return HttpResponse(
-        json.dumps({'fruits': fruits}),
-        content_type='application/json'
-    )
+    # return HttpResponse(
+    #     json.dumps({'fruits': fruits}),
+    #     content_type='application/json'
+    # )
+
     # Alternative:
-    # return JsonResponse({'fruits': fruits})
+    return JsonResponse({'fruits': fruits})

@@ -22,7 +22,12 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    fruits = models.ManyToManyField(Fruit, through="OrderItem")
+    order_date = models.DateTimeField(auto_now_add=True)
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     fruit = models.ForeignKey(Fruit, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    order_date = models.DateTimeField(auto_now_add=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

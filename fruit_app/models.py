@@ -13,6 +13,10 @@ class Fruit(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        print('Saving fruit:', self.name)
+        super().save(*args, **kwargs)
+
 
 class Customer(models.Model):
     name = models.CharField(max_length=100)

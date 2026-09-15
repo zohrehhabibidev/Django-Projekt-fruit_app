@@ -11,3 +11,18 @@ class Fruit(models.Model):
     is_available = models.BooleanField(default=True)
     description = models.TextField(blank=True)
     origin_country = models.CharField(max_length=50, null=True)
+
+
+class Customer(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+    address = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Order(models.Model):
+    fruit = models.ForeignKey(Fruit, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    order_date = models.DateTimeField(auto_now_add=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

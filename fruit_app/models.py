@@ -9,6 +9,11 @@ class Fruit(models.Model):
     is_available = models.BooleanField(default=True)
     description = models.TextField(blank=True)
     origin_country = models.CharField(max_length=50, null=True)
+    slug = models.SlugField(blank=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = "Fruits"
 
     def __str__(self):
         return self.name
@@ -19,7 +24,11 @@ class Fruit(models.Model):
 
 
 class Customer(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(
+        max_length=100, help_text="Enter the customer's full name",
+        error_messages={
+            "max_length": "The name is too long."
+        })
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, blank=True)
     address = models.TextField(blank=True)

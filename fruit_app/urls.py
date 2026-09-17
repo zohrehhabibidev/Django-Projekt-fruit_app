@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import send_fruits
+from .views import FruitListView
 
 urlpatterns = [
-    path('', send_fruits),
+    # path('', send_fruits),
+    path('', FruitListView.as_view(), name='fruit-list'),
 ]

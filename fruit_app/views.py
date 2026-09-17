@@ -7,8 +7,17 @@ from .models import Fruit
 
 
 class FruitListView(ListView):
+    queryset = Fruit.objects.all()
+    template_name = 'fruit_list.html'
+
+
+class FruitSearchView(ListView):
     model = Fruit
     template_name = 'fruit_list.html'
+
+    def get_queryset(self):
+        name = self.kwargs['name']
+        return Fruit.objects.filter(name__icontains=name)
 
 
 # def send_fruits(request):

@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Fruit
 
 
@@ -18,6 +18,18 @@ class FruitSearchView(ListView):
     def get_queryset(self):
         name = self.kwargs['name']
         return Fruit.objects.filter(name__icontains=name)
+
+
+class FruitDetailView(DetailView):
+    model = Fruit
+    template_name = 'fruit_detail.html'
+
+    # def get_queryset(self):
+    #     slug = self.kwargs['slug']
+    #     return Fruit.objects.filter(slug=slug)
+
+    def get_object(self):
+        return Fruit.objects.get(name=self.kwargs['name'])
 
 
 # def send_fruits(request):
